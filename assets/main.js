@@ -38,7 +38,12 @@
   var svc = $('#service'); if (svc && qs.get('service')) svc.value = qs.get('service');
   if (qs.get('tour')) $$('input[name="t_tours"]').forEach(function (c) { if (c.value === qs.get('tour')) c.checked = true; });
 
-  function openWA(text) { window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer'); }
+  function openWA(text) {
+    var a = document.createElement('a');
+    a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
+    a.target = '_blank'; a.rel = 'noopener noreferrer';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
   function vis(node) { var s = node.querySelector('.' + lang()); return (s || node).textContent.replace(/\s+/g, ' ').trim(); }
 
   /* simple contact form */
