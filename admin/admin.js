@@ -128,7 +128,9 @@
     el.innerHTML = '<span>' + msg + '</span>' + (link ? '<a href="' + link + '">' + esc(t('open')) + '</a>' : '');
     $('#toasts').appendChild(el); setTimeout(function () { el.remove(); }, kind === 'err' ? 7000 : 4500);
   }
-  function errMsg(e) { return esc((e && (e.message || e.error_description)) || String(e)); }
+  var ERR_SW = { 'Invalid login credentials': 'Email au nenosiri si sahihi.', 'Email not confirmed': 'Thibitisha email yako kwanza (angalia inbox).',
+    'User already registered': 'Email hii tayari imesajiliwa. Ingia au badilisha nenosiri.', 'Password should be at least 6 characters.': 'Nenosiri liwe angalau herufi 6.' };
+  function errMsg(e) { var m = (e && (e.message || e.error_description)) || String(e); return esc(lang === 'sw' && ERR_SW[m] ? ERR_SW[m] : m); }
   function parseHash() {
     var h = location.hash.replace(/^#\/?/, ''), q = {};
     var parts = h.split('?'), path = parts[0].split('/');
