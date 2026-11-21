@@ -100,6 +100,8 @@
     swap: 'M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3 5 6.99h3V14h2V6.99h3L9 3z',
     trash: 'M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z',
     dl: 'M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z',
+    lock: 'M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3.1-9H8.9V6a3.1 3.1 0 0 1 6.2 0v2z',
+    eye: 'M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
     clock: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.5 5H11v6l5.2 3.2.8-1.3-4.5-2.7V7z'
   };
   function ic(n, cls) { return '<svg class="' + (cls || 'ico') + '" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="' + P[n] + '"/></svg>'; }
@@ -159,22 +161,35 @@
     var m = S.recovery ? 'reset' : S.authMode, msg = S.authMsg;
     var title = { login: t('login'), signup: t('signup'), forgot: t('forgot'), reset: t('new_password') }[m];
     var sub = { login: t('login_sub'), signup: t('signup_sub'), forgot: t('reset_sub'), reset: t('min6') }[m];
+    function inp(id, icon, label, type, ac, extra) {
+      return '<div class="afield"><label class="sr" for="' + id + '">' + label + '</label>' + ic(icon, 'aico') +
+        '<input id="' + id + '" type="' + type + '" placeholder="' + esc(label) + '" required autocomplete="' + ac + '"' + (extra || '') + '>' +
+        (type === 'password' ? '<button type="button" class="peek" aria-label="Show password" data-peek="' + id + '">' + ic('eye') + '</button>' : '') + '</div>';
+    }
     var f = '';
-    if (m === 'signup') f += '<div class="field"><label class="f" for="a_name">' + t('name') + '</label><input id="a_name" required maxlength="120" autocomplete="name"></div>';
-    if (m !== 'reset') f += '<div class="field"><label class="f" for="a_email">' + t('email') + '</label><input id="a_email" type="email" required autocomplete="email"></div>';
-    if (m !== 'forgot') f += '<div class="field"><label class="f" for="a_pw">' + (m === 'reset' ? t('new_password') : t('password')) + '</label><input id="a_pw" type="password" required minlength="6" autocomplete="' + (m === 'login' ? 'current-password' : 'new-password') + '"></div>';
+    if (m === 'signup') f += inp('a_name', 'user', t('name'), 'text', 'name', ' maxlength="120"');
+    if (m !== 'reset') f += inp('a_email', 'mail', t('email'), 'email', 'email');
+    if (m !== 'forgot') f += inp('a_pw', 'lock', m === 'reset' ? t('new_password') : t('password'), 'password', m === 'login' ? 'current-password' : 'new-password', ' minlength="6"');
     var btn = { login: t('login'), signup: t('signup'), forgot: t('send_reset'), reset: t('save_password') }[m];
-    var links = m === 'login' ? '<a href="#" data-mode="signup">' + t('no_account') + '</a><a href="#" data-mode="forgot">' + t('forgot') + '</a>'
+    var links = m === 'login' ? '<a href="#" data-mode="forgot">' + t('forgot') + '</a><span>' + (lang === 'en' ? 'New staff?' : 'Mfanyakazi mpya?') + ' <a href="#" data-mode="signup">' + t('signup') + '</a></span>'
       : m === 'reset' ? '' : '<a href="#" data-mode="login">' + t('have_account') + '</a>';
-    app.innerHTML = '<div class="auth"><div class="auth-art"><img class="logo" src="/assets/careem-logo.png" alt="CAREEM"><div><h1>' + t('art_h') + '</h1><p>' + t('art_p') + '</p><ul><li>' + t('art_1') + '</li><li>' + t('art_2') + '</li><li>' + t('art_3') + '</li><li>' + t('art_4') + '</li></ul></div><small style="color:#aaa">© CAREEM Global Services Limited</small></div>' +
-      '<div class="auth-form"><form class="auth-card" id="authForm"><div class="row" style="justify-content:space-between;margin-bottom:26px"><img src="/assets/careem-logo.png" alt="CAREEM" style="width:96px"> ' + langToggle() + '</div>' +
+    app.innerHTML = '<div class="auth">' +
+      '<div class="auth-art"><div class="art-in"><div class="art-logo"><img src="/assets/careem-logo.png" alt="CAREEM"></div><h1>' + t('art_h') + '</h1><p>' + t('art_p') + '</p>' +
+      '<ul><li>' + ic('job') + t('art_1') + '</li><li>' + ic('swap') + t('art_2') + '</li><li>' + ic('staff') + t('art_3') + '</li><li>' + ic('note') + t('art_4') + '</li></ul></div>' +
+      '<small>© ' + new Date().getFullYear() + ' CAREEM Global Services Limited · app.careemglobal.com</small></div>' +
+      '<div class="auth-form"><div class="auth-lang">' + langToggle() + '</div><div class="auth-wrap"><form class="auth-card" id="authForm" novalidate>' +
+      '<img class="auth-logo" src="/assets/careem-logo.png" alt="CAREEM Global Services">' +
       '<h2>' + title + '</h2><p class="sub">' + sub + '</p>' + (msg ? '<div class="alert ' + msg[0] + '">' + msg[1] + '</div>' : '') + f +
-      '<button class="btn" type="submit">' + btn + '</button><div class="auth-links">' + links + '</div></form></div></div>';
+      '<button class="btn" type="submit"><span>' + btn + '</span></button><div class="auth-links">' + links + '</div></form>' +
+      '<p class="auth-foot">' + ic('lock') + (lang === 'en' ? 'Secure connection · Staff only' : 'Muunganisho salama · Wafanyakazi pekee') + '</p></div></div></div>';
+    $$('[data-peek]').forEach(function (b) { b.addEventListener('click', function () { var i = document.getElementById(b.dataset.peek); var show = i.type === 'password'; i.type = show ? 'text' : 'password'; b.classList.toggle('on', show); i.focus(); }); });
+    var first = $('#authForm input'); if (first && window.innerWidth > 860) first.focus();
     bindLang();
     $$('[data-mode]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); S.authMode = a.dataset.mode; S.authMsg = null; renderAuth(); }); });
     $('#authForm').addEventListener('submit', async function (e) {
       e.preventDefault();
-      var b = $('#authForm button[type=submit]'); b.disabled = true;
+      if (!$('#authForm').checkValidity()) { $('#authForm').reportValidity(); return; }
+      var b = $('#authForm button[type=submit]'); b.disabled = true; b.classList.add('loading');
       var email = $('#a_email') && $('#a_email').value.trim(), pw = $('#a_pw') && $('#a_pw').value, res;
       var redirect = location.origin + location.pathname;
       try {
