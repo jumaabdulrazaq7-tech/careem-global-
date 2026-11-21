@@ -89,3 +89,5 @@ nav a.active{color:var(--red)}
 .f-logo{width:150px;height:auto;background:#fff;border-radius:14px;padding:10px 14px}
 .hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
 .thanks{margin-top:18px;background:#e9f9ef;border:1px solid #9be0b4;color:#0f5f2c;border-radius:14px;padding:16px 18px;font-size:15px}
+.top-r>a+a{border-left:1px solid #ffffff33;padding-left:14px}
+@media(max-width:620px){.top-r .hide-xs{display:none}.top-r>a+a{border-left:0;padding-left:0}}
