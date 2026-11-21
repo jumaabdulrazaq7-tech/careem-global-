@@ -255,7 +255,7 @@
   /* ---------------- dashboard ---------------- */
   async function viewDashboard() {
     shell(t('dashboard'), 'dashboard', '<div class="kpis">' + [1, 2, 3, 4].map(function () { return '<div class="card kpi"><div style="flex:1"><div class="skeleton" style="width:50%;height:26px;margin-bottom:8px"></div><div class="skeleton" style="width:70%"></div></div></div>'; }).join('') + '</div>');
-    var since = new Date(Date.now() - 14 * 864e5); since.setHours(0, 0, 0, 0);
+    var since = new Date(); since.setHours(0, 0, 0, 0); since = new Date(since.getTime() - 13 * 864e5);
     var res = await Promise.all([
       sb.from('leads').select('type,status,created_at,assigned_to').order('created_at', { ascending: false }).limit(5000),
       sb.from('leads').select('id,ref_code,full_name,phone,type,status,created_at').order('created_at', { ascending: false }).limit(8)
