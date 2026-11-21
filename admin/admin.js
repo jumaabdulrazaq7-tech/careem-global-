@@ -144,7 +144,7 @@
 
   /* ---------------- setup check ---------------- */
   if (!CFG.supabaseUrl || !CFG.supabaseKey || !window.supabase) {
-    app.innerHTML = '<div class="boot"><img src="../assets/careem-logo.png" alt="CAREEM"><div style="text-align:center;max-width:420px;padding:0 20px"><h2>' + t('setup_h') + '</h2><p class="muted">' + t('setup_p') + '</p></div></div>';
+    app.innerHTML = '<div class="boot"><img src="/assets/careem-logo.png" alt="CAREEM"><div style="text-align:center;max-width:420px;padding:0 20px"><h2>' + t('setup_h') + '</h2><p class="muted">' + t('setup_p') + '</p></div></div>';
     return;
   }
   var sb = window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
@@ -166,8 +166,8 @@
     var btn = { login: t('login'), signup: t('signup'), forgot: t('send_reset'), reset: t('save_password') }[m];
     var links = m === 'login' ? '<a href="#" data-mode="signup">' + t('no_account') + '</a><a href="#" data-mode="forgot">' + t('forgot') + '</a>'
       : m === 'reset' ? '' : '<a href="#" data-mode="login">' + t('have_account') + '</a>';
-    app.innerHTML = '<div class="auth"><div class="auth-art"><img class="logo" src="../assets/careem-logo.png" alt="CAREEM"><div><h1>' + t('art_h') + '</h1><p>' + t('art_p') + '</p><ul><li>' + t('art_1') + '</li><li>' + t('art_2') + '</li><li>' + t('art_3') + '</li><li>' + t('art_4') + '</li></ul></div><small style="color:#aaa">© CAREEM Global Services Limited</small></div>' +
-      '<div class="auth-form"><form class="auth-card" id="authForm"><div class="row" style="justify-content:space-between;margin-bottom:26px"><img src="../assets/careem-logo.png" alt="CAREEM" style="width:96px"> ' + langToggle() + '</div>' +
+    app.innerHTML = '<div class="auth"><div class="auth-art"><img class="logo" src="/assets/careem-logo.png" alt="CAREEM"><div><h1>' + t('art_h') + '</h1><p>' + t('art_p') + '</p><ul><li>' + t('art_1') + '</li><li>' + t('art_2') + '</li><li>' + t('art_3') + '</li><li>' + t('art_4') + '</li></ul></div><small style="color:#aaa">© CAREEM Global Services Limited</small></div>' +
+      '<div class="auth-form"><form class="auth-card" id="authForm"><div class="row" style="justify-content:space-between;margin-bottom:26px"><img src="/assets/careem-logo.png" alt="CAREEM" style="width:96px"> ' + langToggle() + '</div>' +
       '<h2>' + title + '</h2><p class="sub">' + sub + '</p>' + (msg ? '<div class="alert ' + msg[0] + '">' + msg[1] + '</div>' : '') + f +
       '<button class="btn" type="submit">' + btn + '</button><div class="auth-links">' + links + '</div></form></div></div>';
     bindLang();
@@ -198,7 +198,7 @@
   }
 
   function renderPending() {
-    app.innerHTML = '<div class="boot" style="padding:20px"><img src="../assets/careem-logo.png" alt="CAREEM"><div class="card" style="max-width:440px;text-align:center"><div class="bd"><h2 style="margin-top:0">' + t('pending_h') + '</h2><p class="muted">' + t('pending_p') + '</p><p><b>' + esc(S.session.user.email) + '</b></p><div class="row" style="justify-content:center"><button class="btn" id="pRefresh">' + t('refresh') + '</button><button class="btn ghost" id="pOut">' + t('signout') + '</button></div></div></div></div>';
+    app.innerHTML = '<div class="boot" style="padding:20px"><img src="/assets/careem-logo.png" alt="CAREEM"><div class="card" style="max-width:440px;text-align:center"><div class="bd"><h2 style="margin-top:0">' + t('pending_h') + '</h2><p class="muted">' + t('pending_p') + '</p><p><b>' + esc(S.session.user.email) + '</b></p><div class="row" style="justify-content:center"><button class="btn" id="pRefresh">' + t('refresh') + '</button><button class="btn ghost" id="pOut">' + t('signout') + '</button></div></div></div></div>';
     $('#pRefresh').onclick = boot; $('#pOut').onclick = signOut;
   }
   async function signOut() { if (S.channel) { sb.removeChannel(S.channel); S.channel = null; } await sb.auth.signOut(); S.profile = null; S.session = null; S.authMode = 'login'; S.authMsg = null; location.hash = ''; renderAuth(); }
@@ -220,7 +220,7 @@
   }
   function shell(title, active, body, extra) {
     var c = S.counts, me = S.profile;
-    app.innerHTML = '<div class="shell"><aside class="side" id="side"><div class="brand"><img src="../assets/careem-logo.png" alt="CAREEM"></div><nav>' +
+    app.innerHTML = '<div class="shell"><aside class="side" id="side"><div class="brand"><img src="/assets/careem-logo.png" alt="CAREEM"></div><nav>' +
       navLink('#/dashboard', 'dash', t('dashboard'), active === 'dashboard') +
       navLink('#/leads', 'inbox', t('leads'), active === 'leads', c.all) +
       '<div class="sec">' + (lang === 'en' ? 'By type' : 'Kwa aina') + '</div>' +
