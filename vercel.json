@@ -1,24 +1,35 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
-    { "source": "/", "has": [{ "type": "host", "value": "app.careemglobal.com" }], "destination": "/admin/index.html" }
-  ],
   "headers": [
     {
       "source": "/admin/(.*)",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
-    },
+    }
+  ],
+  "redirects": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "app.careemglobal.com" }],
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
-        { "key": "X-Frame-Options", "value": "DENY" }
-      ]
+      "has": [
+        {
+          "type": "host",
+          "value": "app.careemglobal.com"
+        }
+      ],
+      "destination": "/admin/",
+      "permanent": false
     }
   ]
 }
