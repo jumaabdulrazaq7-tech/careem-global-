@@ -14,7 +14,7 @@ KURASA:
 - assets/style.css, assets/main.js  CSS na JS za kurasa zote
 
 - Lugha: Kiswahili (default) + English (kitufe SW/EN juu). Chaguo la mtumiaji linahifadhiwa.
-- Fomu ya mawasiliano inaandaa ujumbe wa WhatsApp (+255 773 490 719); haihifadhi data.
+- Fomu zote zinahifadhi ombi kwenye admin app (Supabase), kisha zinafungua WhatsApp ya +971 58 124 2603. Simu ya Tanzania: +255 773 490 719.
 - Picha zinatoka Unsplash (zinahitaji internet). Picha ikishindwa ku-load, inaonyeshwa rangi badala yake.
 
 KABLA YA KUWEKA HEWANI:
