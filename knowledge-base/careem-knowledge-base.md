@@ -150,11 +150,11 @@ Never send money to an unknown agent. Insist on an official receipt and verify a
 
 **Kiswahili**
 
-Fomu huandaa ujumbe wa WhatsApp na inaweza kuhifadhi ombi kwenye mfumo wa CAREEM kabla WhatsApp haijafunguka. Ukituma ujumbe, sera za WhatsApp zinatumika. Usitume nakala za pasipoti, vyeti, namba za utambulisho, taarifa za benki au kadi, wala nywila kwenye mazungumzo. Wakala atakuelekeza njia salama ya kuwasilisha nyaraka.
+Ukijaza fomu, ombi lako linahifadhiwa kwenye mfumo salama wa CAREEM (linaonwa na wafanyakazi walioidhinishwa pekee), kisha WhatsApp inafunguka. Unaweza kuomba taarifa zako zifutwe kupitia WhatsApp. Ukituma ujumbe, sera za WhatsApp zinatumika. Usitume nakala za pasipoti, vyeti, namba za utambulisho, taarifa za benki au kadi, wala nywila kwenye mazungumzo. Wakala atakuelekeza njia salama ya kuwasilisha nyaraka.
 
 **English**
 
-Forms prepare a WhatsApp message and can save an enquiry in CAREEM’s system before WhatsApp opens. WhatsApp’s policies apply when you send the message. Keep passport scans, certificates, ID numbers, bank or card details and passwords out of chat. An agent will explain secure document submission.
+When you submit a form, your enquiry is saved in CAREEM’s secure system (seen only by authorised staff), then WhatsApp opens. You can ask on WhatsApp for your details to be deleted. WhatsApp’s policies apply when you send the message. Keep passport scans, certificates, ID numbers, bank or card details and passwords out of chat. An agent will explain secure document submission.
 
 ## Ofisi na mawasiliano · Offices and contacts
 
@@ -209,8 +209,7 @@ Taarifa hizi hazijaainishwa. Wakala wa CAREEM atazithibitisha.
 - Ni masharti, nyaraka, ada na muda gani wa kushughulikia ombi la visa husika?
 - Ni leseni, namba za usajili, hali ya alama ya biashara na majina gani ya washirika yanaweza kutangazwa?
 - Saa za ofisi, muda wa majibu, barua pepe rasmi, anwani ya UAE na mawasiliano ya dharura au malalamiko ni zipi?
-- Maombi yanahifadhiwa wapi na kwa muda gani? Ni njia gani salama ya kuwasilisha nyaraka? Ilani ya faragha itasasishwa lini ili ieleze jinsi fomu zinavyofanya kazi?
-- Je, README inaweza kusasishwa ili namba ya simu ya Tanzania isitambulishwe kama WhatsApp?
+- Maombi yanahifadhiwa kwa muda gani, na ni njia gani salama ya kuwasilisha nyaraka?
 
 **English**
 
@@ -221,5 +220,4 @@ Not stated – a CAREEM agent will confirm.
 - What current requirements, documents, fees and processing times apply to a specific visa case?
 - Which licence and registration numbers, trademark status and partner names may be published?
 - What office hours, response times, official email, UAE address and emergency or complaint contacts can be shared?
-- Where and for how long are enquiries stored, which document channel is secure, and when will the public privacy notice reflect the form behaviour?
-- Can the README be corrected where it labels the Tanzania call number as WhatsApp?
+- How long are enquiries kept, and which document channel is secure?
