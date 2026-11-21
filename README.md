@@ -22,3 +22,11 @@ KABLA YA KUWEKA HEWANI:
 2. Leseni ya wakala wa ajira nje ya nchi (Tanzania) na kibali cha tour operator/travel agent.
 3. Ongeza email rasmi, TIN/namba ya usajili, na anwani/namba ya UAE kama ipo.
 4. Weka picha halisi za kampuni (ofisi, wateja waliosafiri) badala ya picha za stock pale zinapopatikana.
+
+ADMIN APP (/admin)
+- Fungua /admin/ kuingia. Fomu za website (register, plan-trip, contact) zinahifadhiwa kwenye Supabase kisha WhatsApp inafunguka.
+- Database: supabase/migrations/20261121000000_careem_init.sql (tables: profiles, leads, lead_activity + RLS).
+- Kuunganisha: weka supabaseUrl na publishable key kwenye assets/config.js (USIWEKE service/secret key).
+- Admin wa kwanza: jisajili kwenye /admin, kisha kwenye Supabase SQL Editor:
+    update public.profiles set role = 'admin' where email = 'EMAIL_YAKO';
+- Wafanyakazi wapya wanajisajili /admin na admin anawaidhinisha kwenye ukurasa wa Wafanyakazi.
