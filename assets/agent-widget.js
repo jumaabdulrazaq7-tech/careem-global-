@@ -3,7 +3,10 @@
    the visitor to the agent on WhatsApp. Text follows the site's SW/EN toggle
    (body.en hides .sw and shows .en via style.css). */
 (function () {
-  var AGENT_URL = 'https://agent.jotform.com/01a2189961f8700088d89469a8f655b8a97e/whatsapp';
+  /* TEMPORARY: the Jotform agent link below returns 404 until the agent's WhatsApp channel is connected.
+     Until then the button opens the company WhatsApp. After connecting, set AGENT_URL = JOTFORM_AGENT_URL. */
+  var JOTFORM_AGENT_URL = 'https://agent.jotform.com/01a2189961f8700088d89469a8f655b8a97e/whatsapp';
+  var AGENT_URL = 'https://wa.me/255773490719';
   var AVATAR = 'https://cdn.jotfor.ms/assets/agent-avatars/avatar_icon_1584.png';
   if (document.getElementById('careem-agent')) return;
 
